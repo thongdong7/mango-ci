@@ -3,6 +3,12 @@ from os.path import join, dirname, exists, abspath
 
 import yaml
 from jinja2 import Template
+import click
+
+
+@click.group()
+def cli():
+    pass
 
 
 def build_install_cmds(install_cmds):
@@ -43,7 +49,9 @@ def build_command(config, field_name, method, env, output_field_name):
     env[output_field_name] = method(value)
 
 
-def main(source_folder):
+@click.command(help='Generate environment to execute the test')
+@click.argument('source_folder')
+def gen(source_folder):
     ci_name = '.travis.yml'
     ci_file = join(source_folder, ci_name)
     code_dir = abspath(source_folder)
@@ -99,5 +107,7 @@ def main(source_folder):
                     # break
 
 
+cli.add_command(gen)
+
 if __name__ == '__main__':
-    main('/data/projects/subfind-cli')
+    cli()
