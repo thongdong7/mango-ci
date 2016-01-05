@@ -47,7 +47,7 @@ def main(source_folder):
     ci_name = '.travis.yml'
     ci_file = join(source_folder, ci_name)
     code_dir = abspath(source_folder)
-    output_dir = join(code_dir, '.thongdong-ci')
+    output_dir = join(code_dir, '.mango-ci')
     if not exists(output_dir):
         os.makedirs(output_dir)
 
