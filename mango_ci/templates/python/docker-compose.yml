@@ -1,0 +1,11 @@
+{%- for v in versions -%}
+{{language}}_{{v}}:
+  build: {{language}}_{{v}}
+  volumes:
+    - {{code}}:/code
+    - ./{{language}}_{{v}}/entry.sh:/entry.sh
+  environment:
+  {%- for v1 in environment[v] %}
+    {{v1}}: "{{environment[v][v1]}}"
+  {% endfor %}
+{% endfor %}
