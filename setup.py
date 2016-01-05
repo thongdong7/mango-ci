@@ -17,7 +17,7 @@ setup(
         ],
         entry_points={
             'console_scripts': [
-                'mango=mango_ci.generate-docker:cli',
+                'mango=mango_ci.generate:cli',
             ],
         },
         classifiers=[
